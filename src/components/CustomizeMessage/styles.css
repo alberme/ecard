@@ -5,7 +5,7 @@
   /* align-items: space-between; */
   height: calc(100vh - 1.5rem);
   /* max-width: min-content; */
-  margin: 0.75rem;
+  padding: 0.75rem;
 }
 
 .customize-message-header {
