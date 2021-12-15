@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./styles.css";
 import snow from '../../images/snow.jpg';
 
-export default function CustomizeMessage() {
+export default function CustomizeMessage({ setGreetingData, setStatus }) {
   const [formData, setFormData] = useState({ 
     greeting: "",
     body: "",
@@ -11,7 +11,8 @@ export default function CustomizeMessage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setGreetingData({ ...formData });
+    setStatus('preview');
   }
 
   const handleInputChange = (event) => {
@@ -39,7 +40,9 @@ export default function CustomizeMessage() {
               name="body"
               id="input-field-body"
               cols="30"
-              rows="10">
+              rows="10"
+              onChange={handleInputChange}
+            >
             </textarea>
             <input
               placeholder="Closing"
