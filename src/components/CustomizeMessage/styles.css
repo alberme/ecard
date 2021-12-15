@@ -82,7 +82,7 @@ input {
     flex-direction: column;
     justify-content: space-between;
   }
-  img {
+  .customize-message-header img {
     height: auto;
     width: 150px;
     align-self: flex-start;
