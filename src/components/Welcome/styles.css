@@ -1,0 +1,41 @@
+h2 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.splash-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  width: calc(100vw - 4rem);
+  height: calc(100vh - 4rem);
+  padding: 2em;
+}
+
+.splash-left {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.splash-right {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+  .splash-container {
+    flex-direction: column-reverse;
+  }
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
