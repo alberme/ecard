@@ -2,7 +2,8 @@ import { useState } from 'react';
 import snow from '../images/snow.jpg';
 
 
-function GreetingCard({ greeting, body, closing, setCustomize }) {
+function GreetingCard({ greetingData, setStatus }) {
+  const { greeting, body, closing } = greetingData;
   return (
     <div className="App-header">
       <img src={snow} className="App-logo" alt="snow" />
@@ -14,6 +15,10 @@ function GreetingCard({ greeting, body, closing, setCustomize }) {
       >
         Share Greeting
       </button>
+      <button
+        onClick={() => setStatus('customize')}
+      >
+        Customize
       </button>
     </div>
   );
