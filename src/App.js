@@ -10,7 +10,7 @@ function App() {
   const [customize, setCustomize] = useState(false);
 
   return (
-    <>
+    <div className='App'>
     {
       customize 
        ? <CustomizeMessage />
@@ -21,7 +21,7 @@ function App() {
         setCustomize={setCustomize}
       />
     }
-    </>
+    </div>
   );
 }
 
