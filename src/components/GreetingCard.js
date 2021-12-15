@@ -10,9 +10,10 @@ function GreetingCard({ greeting, body, closing, setCustomize }) {
       <p>{body}</p>
       <p>{closing}</p>
       <button
-        onClick={() => setCustomize(true)}
+        onClick={() => console.log('share!')}
       >
-        Reshare This Card
+        Share Greeting
+      </button>
       </button>
     </div>
   );
