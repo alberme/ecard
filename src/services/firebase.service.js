@@ -26,6 +26,7 @@ export async function generateShortLink(link) {
     });
   } catch (error) {
     console.error('generateShortLink()\n', error);
+    throw error;
   }
   return response.json();
 }
