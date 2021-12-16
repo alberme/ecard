@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { MdOutlineMail, MdOutlineLink } from 'react-icons/md';
+import { generateShortLink } from '../../services/firebase.service';
 import './styles.css';
 
 export default function Share({ show, setShowShare, greetingData }) {
-  const [shareMethod, setShareMethod] = useState(false);
+  const [shareMethod, setShareMethod] = useState('');
   const [email, setEmail] = useState('');
+  const [shortLink, setShortLink] = useState('');
+  const [shortLinkError, setShortLinkError] = useState(false);
 
   const createShareUrl = () => {
     const { greeting, body, closing } = greetingData;
@@ -51,8 +54,20 @@ export default function Share({ show, setShowShare, greetingData }) {
           </form>
         );
       case 'link':
-        return (
-          <div><h2>Coming Soon</h2></div>
+        return shortLink ? (
+          <div className="form-share-email">
+            <label htmlFor="link">Short Link</label>
+            <div className="form-email-input">
+              <input
+                type="text"
+                name="link"
+                readOnly={true}
+                value={shortLink}
+              />
+            </div>
+          </div>
+        ): ( 
+          <h2>{!shortLinkError ? 'Loading...' : 'Error creating a short link'}</h2>
         )
       default:
         return (
@@ -64,11 +79,29 @@ export default function Share({ show, setShowShare, greetingData }) {
     }
   }
 
+  useEffect(() => {
+    if (shareMethod && !shortLink) {
+      const shareUrl = createShareUrl();
+      generateShortLink(shareUrl)
+        .then(({ shortLink }) => {
+          setShortLink(shortLink);
+        })
+        .catch(() => {
+          setShortLinkError(true);
+        });
+    }
+  }, [shareMethod, shortLink]);
+
   return show && (
     <div className="share-container">
       <div className="share-header">
         <h4>Share Your Greeting Card</h4>
-        <IoMdCloseCircleOutline className='icon' onClick={() => setShowShare(false)} />
+        <IoMdCloseCircleOutline className='icon' onClick={() => {
+          setShowShare(false);
+          setShareMethod('');
+          setShortLinkError(false);
+        }}
+        />
       </div>
       { renderShareMethod() }
     </div>
