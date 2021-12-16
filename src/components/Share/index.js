@@ -101,7 +101,7 @@ export default function Share({ show, setShowShare, greetingData }) {
   return show && (
     <div className="share-container">
       <div className="share-header">
-        <h4>Share Your Greeting Card</h4>
+        <h4 id="share-header-text">Share Your Greeting Card</h4>
         <IoMdCloseCircleOutline className='icon' onClick={() => {
           setShowShare(false);
           setShareMethod('');
