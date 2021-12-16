@@ -18,7 +18,7 @@ export default function Share({ show, setShowShare, greetingData }) {
     mailto += 'Go To Greeting Card';
     mailto += '%0D%0A';
 
-    let url = 'https://luceroweb.github.io/ecard';
+    let url = 'https://alberme.github.io/ecard';
     url += `?greeting=${encodeURIComponent(greeting)}`;
     url += `&body=${encodeURIComponent(body)}`;
     url += `&closing=${encodeURIComponent(closing)}`;
