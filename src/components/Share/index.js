@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { MdOutlineMail, MdOutlineLink } from 'react-icons/md';
 import { generateShortLink } from '../../services/firebase.service';
@@ -9,6 +9,7 @@ export default function Share({ show, setShowShare, greetingData }) {
   const [email, setEmail] = useState('');
   const [shortLink, setShortLink] = useState('');
   const [shortLinkError, setShortLinkError] = useState(false);
+  const shortLinkRef = useRef(null);
 
   const createShareUrl = () => {
     const { greeting, body, closing } = greetingData;
@@ -59,10 +60,15 @@ export default function Share({ show, setShowShare, greetingData }) {
             <label htmlFor="link">Short Link</label>
             <div className="form-email-input">
               <input
+                ref={shortLinkRef}
                 type="text"
                 name="link"
                 readOnly={true}
                 value={shortLink}
+                onClick={() => {
+                  shortLinkRef.current.focus();
+                  shortLinkRef.current.select();
+                }}
               />
             </div>
           </div>
