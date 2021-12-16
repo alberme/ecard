@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import snow from '../images/snow.jpg';
+import snow from '../../images/snow.jpg';
+import './styles.css';
 
-
-function GreetingCard({ greetingData, setStatus }) {
+function GreetingCard({ greetingData }) {
   const { greeting, body, closing } = greetingData;
   return (
-    <div className="App-header">
+    <div className="greeting-card-container">
       <img src={snow} className="App-logo" alt="snow" />
       <p>{greeting}</p>
       <p>{body}</p>
