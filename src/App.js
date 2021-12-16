@@ -1,8 +1,7 @@
 import './App.css';
-import GreetingCard from './components/GreetingCard';
 import CustomizeMessage from './components/CustomizeMessage';
 import Welcome from './components/Welcome';
-import Share from './components/Share';
+import Preview from './components/Preview';
 import { useState } from 'react';
 
 function App() {
@@ -22,31 +21,13 @@ function App() {
         return <CustomizeMessage
           setGreetingData={setGreetingData}
           setStatus={setStatus}
-        />
+          greetingData={greetingData}
+        />;
       case 'preview':
-        return (
-          <>
-            <GreetingCard
-              greetingData={greetingData}
-              setStatus={setStatus}
-            />
-            <Share
-              show={showShare}
-              setShowShare={setShowShare}
-              greetingData={greetingData}
-            />
-            <button
-              onClick={() => setShowShare(true)}
-            >
-              Share Greeting
-            </button>
-            <button
-              onClick={() => setStatus('customize')}
-            >
-              Customize
-            </button>
-          </>
-        );
+        return <Preview
+          greetingData={greetingData}
+          setStatus={setStatus}
+        />;
       default:
         return;
     }
