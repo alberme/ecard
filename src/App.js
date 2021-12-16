@@ -6,14 +6,14 @@ import Share from './components/Share';
 import { useState } from 'react';
 
 function App() {
+  const query = new URLSearchParams(window.location.search);
   const [greetingData, setGreetingData] = useState({ 
-    greeting: "",
-    body: "",
-    closing: "",
+    greeting: query.get('greeting') || '',
+    body: query.get('body') || '',
+    closing: query.get('closing') || '',
   });
-  const [status, setStatus] = useState('init');
-  const [showShare, setShowShare] = useState(false);
-  
+  const [status, setStatus] = useState([...query.keys()].length > 0 ? 'preview' : 'init');
+
   const renderApp = () => {
     switch(status) {
       case 'init':
