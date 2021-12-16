@@ -7,6 +7,15 @@ h4 {
   font-weight: normal;
 }
 
+img {
+  width: 450px;
+  height: auto;
+}
+
+.splash-container .splash-left h4 {
+  margin: 1rem 0 6rem 0;
+}
+
 .splash-container {
   display: flex;
   flex-direction: row;
@@ -22,17 +31,34 @@ h4 {
 .splash-left {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
 
+.splash-left-headers {
+  display: flex;
+  flex-direction: column;
 }
 
 .splash-right {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%
 }
 
 @media screen and (max-width: 800px) {
   .splash-container {
+    justify-content: flex-end;
+    gap: 0;
     flex-direction: column-reverse;
+    flex-wrap: nowrap;
+  }
+  .splash-right {
+    height: auto;
+  }
+  .splash-left-headers {
+    flex-grow: 1;
   }
   img {
     height: auto;
