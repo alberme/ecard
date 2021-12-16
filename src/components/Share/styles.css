@@ -1,0 +1,62 @@
+.share-container {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around; */
+  z-index: 9999;
+  align-self: flex-end;
+  background-color: #E7E7E7;
+  /* height: 40vh;
+  width: 100%; */
+
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 80vh;
+  width: 100%; /* Full width */
+  height: 20%; /* Full height */
+}
+
+.share-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 10px;
+  align-items: center;
+  height: 50%;
+}
+
+.form-share-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-email-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0.5rem 0 0.5rem 0; 
+  width: 80%;
+  gap: 20px;
+}
+
+.icon {
+  cursor: pointer;
+  transform: scale(1.5)
+}
+
+.form-share-email .form-email-input input {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.form-share-email .form-email-input button {
+  margin: 0;
+} 
