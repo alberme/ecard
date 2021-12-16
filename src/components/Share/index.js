@@ -7,8 +7,17 @@ export default function Share({ show, setShowShare, greetingData }) {
   const [shareMethod, setShareMethod] = useState(false);
   const [email, setEmail] = useState('');
 
-  const sendEmail = (event) => {
+  const createShareUrl = () => {
     const { greeting, body, closing } = greetingData;
+    let url = 'https://alberme.github.io/ecard';
+    url += `?greeting=${encodeURIComponent(greeting)}`;
+    url += `&body=${encodeURIComponent(body)}`;
+    url += `&closing=${encodeURIComponent(closing)}`;
+
+    return url;
+  }
+
+  const sendEmail = (event) => {
     event.preventDefault();
     
     let mailto = `mailto:${email}`;
@@ -18,10 +27,7 @@ export default function Share({ show, setShowShare, greetingData }) {
     mailto += 'Go To Greeting Card';
     mailto += '%0D%0A';
 
-    let url = 'https://alberme.github.io/ecard';
-    url += `?greeting=${encodeURIComponent(greeting)}`;
-    url += `&body=${encodeURIComponent(body)}`;
-    url += `&closing=${encodeURIComponent(closing)}`;
+    let url = createShareUrl();
 
     mailto += encodeURIComponent(url);
 
