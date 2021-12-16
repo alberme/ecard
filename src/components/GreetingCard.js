@@ -10,16 +10,6 @@ function GreetingCard({ greetingData, setStatus }) {
       <p>{greeting}</p>
       <p>{body}</p>
       <p>{closing}</p>
-      <button
-        onClick={() => console.log('share!')}
-      >
-        Share Greeting
-      </button>
-      <button
-        onClick={() => setStatus('customize')}
-      >
-        Customize
-      </button>
     </div>
   );
 }
