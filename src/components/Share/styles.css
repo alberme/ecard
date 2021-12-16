@@ -6,7 +6,7 @@
   left: 0;
   top: 75vh;
   width: 100%;
-  height: 30%;
+  height: 50%;
 }
 
 h4 {
@@ -56,4 +56,11 @@ h4 {
 
 .form-share-email .form-email-input button {
   margin: 0;
-} 
+}
+
+@media screen and (max-height: 850px) {
+  .share-container {
+     top: 65vh;
+     height: 50%
+  }
+}
