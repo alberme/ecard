@@ -1,9 +1,54 @@
 
 .greeting-card-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   height: 100%;
+  width: 100%;
+}
+
+.greeting-card {
+  position: relative;
+  /* width: 220px; */
+  height: 400px;
+  transform-style: preserve-3d;
+  transform: perspective(2000px);
+  margin-left: 200px;
+  margin-right: 10px;
+}
+
+.greeting-card-cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  transform-origin: left;
+  z-index: 1;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+
+.greeting-card-inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 25px;
+  object-fit: cover;
+}
+
+.greeting-card-cover img {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.greeting-card:hover .greeting-card-cover {
+  transform: rotateY(-135deg);
 }
