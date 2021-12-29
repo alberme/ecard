@@ -44,11 +44,6 @@
   gap: 20px;
 }
 
-.icon {
-  cursor: pointer;
-  transform: scale(2.0)
-}
-
 .form-share-email .form-email-input input {
   flex-grow: 1;
   padding: 1rem;
