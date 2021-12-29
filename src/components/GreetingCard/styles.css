@@ -1,54 +1,109 @@
 
 .greeting-card-container {
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  font-size: calc(10px + 2vmin);
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .greeting-card {
-  position: relative;
-  /* width: 220px; */
+  background-color: transparent;
+  width: 300px;
   height: 400px;
-  transform-style: preserve-3d;
-  transform: perspective(2000px);
-  margin-left: 200px;
-  margin-right: 10px;
+  border: 1px solid #f1f1f1;
+  perspective: 1200px;
+  text-align: center;
+  margin-left: 180px; /* 120px 180px */
+  transition: transform 1.0s, margin-left 0.5s;
+  transform: translate(0px); /* 150px 0px -50px */
 }
 
+.translate-right {
+  margin-left: 120px; /* 120px 180px */
+  transform: translate(150px); /* 150px 0px -50px */
+}
+
+.translate-left {
+  margin-left: 120px; /* 120px 180px */
+  transform: translate(-50px); /* 150px 0px -50px */
+}
+
+/* This container is needed to position the front and back side */
 .greeting-card-cover {
   position: relative;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  transition: transform 1.0s;
+  transform-style: preserve-3d;
   transform-origin: left;
   z-index: 1;
-  transition: 1s;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.greeting-card:hover .greeting-card-cover {
+  transform: rotateY(-150deg);
+}
+
+/* Position the front and back side */
+.greeting-card-front, .greeting-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-.greeting-card-inside {
+.greeting-card-right {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
-  box-sizing: border-box;
-  padding: 25px;
+  width: 100%;
+  top: 0;
+  background-color: aliceblue;
+}
+
+/* Style the front side (fallback if image is missing) */
+.greeting-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.greeting-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.greeting-card img {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
-.greeting-card-cover img {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  width: 100%;
+/* might not need these */
+.greeting-card-controls {
+  display: flex;
+  width: 50%;
   height: 100%;
-  object-fit: cover;
+  justify-content: space-around;
 }
 
-.greeting-card:hover .greeting-card-cover {
-  transform: rotateY(-135deg);
+@media screen and (max-width: 320px) {
+  .greeting-card {
+    margin-left: 10rem;
+  }
+
+  .translate-right {
+    margin-left: 5.5rem;
+    transform: translate(150px);
+  }
+  
+  .translate-left {
+    margin-left: 4.5rem;
+    transform: translate(-50px);
+  }
 }
