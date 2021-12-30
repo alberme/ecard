@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 function GreetingCard({ greetingData }) {
   const { greeting, body, closing } = greetingData;
+  const [cardClosed, setCardClosed] = useState(true);
   const [startCoord, setStartCoord] = useState(0);
   const [cardTranslateIndex, setCardTranslateIndex] = useState(1);
   const translateNames = ['translate-left', '', 'translate-right']
@@ -13,6 +14,8 @@ function GreetingCard({ greetingData }) {
   const handleStartGesture = (event) => setStartCoord(event.changedTouches[0].screenX);
 
   const handleEndGesture = (event) => {
+    if (cardClosed) return;
+    
     const endCoord = event.changedTouches[0].screenX;
     let index = cardTranslateIndex;
     if (endCoord > startCoord) {
@@ -23,12 +26,18 @@ function GreetingCard({ greetingData }) {
     // limit index between 0 and 2;
     index = Math.min(Math.max(index, 0), 2);
     setCardTranslateIndex(index);
-    setStartCoord(0);
+    setStartCoord(1);
   }
 
   return (
-    <div className="greeting-card-container" onTouchStart={handleStartGesture} onTouchEnd={handleEndGesture}>
-      <div className={`greeting-card ${translateNames[cardTranslateIndex]}`}>
+    <div className="greeting-card-container animate pop">
+      <div
+        className={`greeting-card ${cardClosed ? 'closed' : ''} ${translateNames[cardTranslateIndex]}`}
+        onMouseEnter={() => setCardClosed(false)}
+        onMouseLeave={() => setCardClosed(true)}
+        onTouchStart={handleStartGesture}
+        onTouchEnd={handleEndGesture}
+      >
         <div className="greeting-card-cover">
           <div className="greeting-card-front">
             <img src={snow} alt="Avatar" />
@@ -43,10 +52,21 @@ function GreetingCard({ greetingData }) {
           <p>{closing}</p>
         </div>
       </div>
-      {/* <div className="greeting-card-controls">
-        <MdArrowBack className='icon' onClick={() => {}} />
-        <MdArrowForward className='icon' onClick={() => {}} />
-      </div> */}
+      <div className="greeting-card-instructions">
+        {
+          cardClosed ? (
+            <h3>Tap To Open!</h3>
+          ) : 
+          (
+            <>
+              <MdArrowBack className='icon'/>
+              <h3>Swipe To Move Card!</h3>
+              <MdArrowForward className='icon'/>
+            </>
+          )
+        }
+        
+      </div>
     </div>
   );
 }
