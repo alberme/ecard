@@ -14,7 +14,7 @@ button {
 
 .icon {
   cursor: pointer;
-  transform: scale(2.0)
+  transform: scale(2.0);
 }
 
 .animate.pop {
@@ -31,5 +31,39 @@ button {
   100% {
     opacity: 1;
     transform: scale(1, 1);
+  }
+}
+
+.animate.bounce {
+  animation-fill-mode: backwards;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.17,1.23,.6,1.84);
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.animate.bounce.left {
+  animation-name: bounce-left;
+}
+
+.animate.bounce.right {
+  animation-name: bounce-right;
+}
+
+@keyframes bounce-right {
+  0% {
+    transform: translate(0) scale(2.0);
+  }
+  100% {
+    transform: translate(0.8rem) scale(2.0);
+  }
+}
+
+@keyframes bounce-left {
+  0% {
+    transform: translate(0) scale(2.0);
+  }
+  100% {
+    transform: translate(-0.8rem) scale(2.0);
   }
 }
