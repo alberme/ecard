@@ -11,7 +11,7 @@ export default function Welcome({ setStatus }) {
         </div>
         <button onClick={() => setStatus('customize')}>Get Started</button>
       </div>
-      <div className="splash-right">
+      <div className="splash-right animate pop">
         <img src={snow} alt="snow" />
       </div>
     </div>
