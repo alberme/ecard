@@ -1,7 +1,6 @@
 
 .greeting-card-container {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -89,14 +88,25 @@
   object-fit: cover;
 }
 
-/* might not need these */
-.greeting-card-controls {
-  display: flex;
-  width: 50%;
-  height: 100%;
+/* gesture instructions for mobile users */
+.greeting-card-instructions {
+  display: none; /* dont display on desktop screens */
+  align-items: center;
+  width: 100%;
   justify-content: space-around;
 }
 
+/* display gesture instructions on mobile screens */
+@media screen and (max-width: 800px) {
+  .greeting-card-instructions {
+    display: flex;
+  }
+  .greeting-card-container {
+    flex-wrap: wrap;
+  }
+}
+
+/** iPhone 5/SE **/
 @media screen and (max-width: 320px) {
   .greeting-card {
     margin-left: 10rem;
