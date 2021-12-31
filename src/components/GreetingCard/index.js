@@ -13,12 +13,16 @@ function GreetingCard({ greetingData }) {
   
   const handleStartGesture = (event) => setStartCoord(event.changedTouches[0].screenX);
 
-  const handleEndGesture = (event) => {
-    if (cardClosed) return;
-    
+  const handleEndGesture = (event) => {  
     const endCoord = event.changedTouches[0].screenX;
     let index = cardTranslateIndex;
-    if (endCoord > startCoord) {
+    
+    // open card on user gesture
+    if (cardClosed) {
+      setCardClosed(false);
+      index = 1;
+    }
+    else if (endCoord > startCoord) {
       index += 1;
     } else {
       index -= 1;
@@ -26,19 +30,18 @@ function GreetingCard({ greetingData }) {
     // limit index between 0 and 2;
     index = Math.min(Math.max(index, 0), 2);
     setCardTranslateIndex(index);
-    setStartCoord(1);
+    setStartCoord(0);
   }
-
   return (
     <div className="greeting-card-container animate pop">
       <div
-        className={`greeting-card ${cardClosed ? 'closed' : ''} ${translateNames[cardTranslateIndex]}`}
+        className={`greeting-card ${cardClosed ? 'closed animate bounce vertical' : 'open'} ${translateNames[cardTranslateIndex]}`}
         onMouseEnter={() => setCardClosed(false)}
         onMouseLeave={() => setCardClosed(true)}
         onTouchStart={handleStartGesture}
         onTouchEnd={handleEndGesture}
       >
-        <div className="greeting-card-cover">
+        <div className="greeting-card-cover" style={cardClosed ? null : { transform: 'rotateY(-150deg)' }}>
           <div className="greeting-card-front">
             <img src={snow} alt="Avatar" />
           </div>
