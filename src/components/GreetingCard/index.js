@@ -59,9 +59,9 @@ function GreetingCard({ greetingData }) {
           ) : 
           (
             <>
-              <MdArrowBack className='icon'/>
+              <MdArrowBack className='icon animate bounce left'/>
               <h3>Swipe To Move Card!</h3>
-              <MdArrowForward className='icon'/>
+              <MdArrowForward className='icon animate bounce right'/>
             </>
           )
         }
