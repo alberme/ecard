@@ -67,3 +67,17 @@ button {
     transform: translate(-0.8rem) scale(2.0);
   }
 }
+
+.animate.bounce.vertical {
+  animation-name: bounce-vertical;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes bounce-vertical {
+  0% {
+    transform: translateY(-0.3rem);
+  }
+  100% {
+    transform: translateY(0.3rem);
+  }
+}
