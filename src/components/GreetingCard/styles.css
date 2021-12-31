@@ -16,9 +16,9 @@
   border: 1px solid #f1f1f1;
   perspective: 1200px;
   text-align: center;
-  margin-left: 180px; /* 120px 180px */
+  /* margin-left: 180px; 120px 180px */
   transition: transform 1.0s, margin-left 0.5s;
-  transform: translate(0px); /* 150px 0px -50px */
+  /* transform: translate(0px); 150px 0px -50px */
 }
 
 .greeting-card.closed {
@@ -26,12 +26,17 @@
   transform: translate(0px);
 }
 
-.translate-right {
+.greeting-card.open {
+  margin-left: 180px;
+  transform: translate(0px);
+}
+
+.greeting-card.translate-right {
   margin-left: 120px; /* 120px 180px */
   transform: translate(150px); /* 150px 0px -50px */
 }
 
-.translate-left {
+.greeting-card.translate-left {
   margin-left: 120px; /* 120px 180px */
   transform: translate(-50px); /* 150px 0px -50px */
 }
@@ -48,9 +53,9 @@
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.greeting-card:hover .greeting-card-cover {
+/* .greeting-card:hover .greeting-card-cover {
   transform: rotateY(-150deg);
-}
+} */
 
 /* Position the front and back side */
 .greeting-card-front, .greeting-card-back {
