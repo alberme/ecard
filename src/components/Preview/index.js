@@ -3,7 +3,7 @@ import GreetingCard from '../GreetingCard';
 import Share from '../Share';
 import './styles.css';
 
-export default function Preview ({ greetingData, setStatus }) {
+export default function Preview ({ greetingData, setStatus, showCustomize }) {
   const [showShare, setShowShare] = useState(false);
   
   return (
@@ -23,11 +23,15 @@ export default function Preview ({ greetingData, setStatus }) {
         >
           Share Greeting
         </button>
-        <button
-          onClick={() => setStatus('customize')}
-        >
-          Customize
-        </button>
+        {
+          showCustomize && (
+            <button
+              onClick={() => setStatus('customize')}
+            >
+              Customize
+            </button>
+          )
+        }
       </div>
     </div>
   )

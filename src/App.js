@@ -6,12 +6,13 @@ import { useState } from 'react';
 
 function App() {
   const query = new URLSearchParams(window.location.search);
+  const hasQuery = [...query.keys()].length > 0;
   const [greetingData, setGreetingData] = useState({ 
     greeting: query.get('greeting') || '',
     body: query.get('body') || '',
     closing: query.get('closing') || '',
   });
-  const [status, setStatus] = useState([...query.keys()].length > 0 ? 'preview' : 'init');
+  const [status, setStatus] = useState(hasQuery ? 'preview' : 'init');
 
   const renderApp = () => {
     switch(status) {
@@ -27,6 +28,7 @@ function App() {
         return <Preview
           greetingData={greetingData}
           setStatus={setStatus}
+          showCustomize={!hasQuery}
         />;
       default:
         return;
