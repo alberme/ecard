@@ -1,4 +1,4 @@
-import snow from '../../images/tina.png';
+import frontImage from '../../images/wordle.jpg';
 import tina from '../../images/tina_inside.gif';
 import { MdArrowBack, MdArrowForward } from 'react-icons/md';
 import './styles.css';
@@ -43,7 +43,7 @@ function GreetingCard({ greetingData }) {
       >
         <div className="greeting-card-cover" style={cardClosed ? null : { transform: 'rotateY(-150deg)' }}>
           <div className="greeting-card-front">
-            <img src={snow} alt="Avatar" />
+            <img src={frontImage} alt="Avatar" />
           </div>
           <div className="greeting-card-back">
             <img src={tina} alt="Avatar" />
