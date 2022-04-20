@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./styles.css";
-import snow from '../../images/snow.jpg';
+import "../styles/Edit.css";
+import snow from '../images/snow.jpg';
 
-export default function CustomizeMessage({ setGreetingData, greetingData, setStatus }) {
+export default function Edit({ setGreetingData, greetingData, setStatus }) {
   const { greeting, body, closing } = greetingData;
   const [formData, setFormData] = useState({ 
     greeting,

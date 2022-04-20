@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import GreetingCard from '../GreetingCard';
-import Share from '../Share';
-import './styles.css';
+import Ecard from '../components/Ecard';
+import Share from '../components/Share';
+import '../styles/Preview.css';
 
 export default function Preview ({ greetingData, setStatus, showCustomize }) {
   const [showShare, setShowShare] = useState(false);
   
   return (
     <div className="preview-container">
-      <GreetingCard
+      <Ecard
         greetingData={greetingData}
         setStatus={setStatus}
       />

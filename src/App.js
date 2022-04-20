@@ -1,7 +1,7 @@
-import './App.css';
-import CustomizeMessage from './components/CustomizeMessage';
-import Welcome from './components/Welcome';
-import Preview from './components/Preview';
+import './styles/App.css';
+import Edit from './pages/Edit';
+import Home from './pages/Home';
+import Preview from './pages/Preview';
 import { useState } from 'react';
 
 function App() {
@@ -17,9 +17,9 @@ function App() {
   const renderApp = () => {
     switch(status) {
       case 'init':
-        return <Welcome setStatus={setStatus}/>;
+        return <Home setStatus={setStatus}/>;
       case 'customize':
-        return <CustomizeMessage
+        return <Edit
           setGreetingData={setGreetingData}
           setStatus={setStatus}
           greetingData={greetingData}

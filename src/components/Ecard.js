@@ -1,7 +1,7 @@
-import frontImage from '../../images/wordle.jpg';
-import tina from '../../images/tina_inside.gif';
+import frontImage from '../images/wordle.jpg';
+import tina from '../images/tina_inside.gif';
 import { MdArrowBack, MdArrowForward } from 'react-icons/md';
-import './styles.css';
+import '../styles/Ecard.css';
 import { useState } from 'react';
 
 function GreetingCard({ greetingData }) {

@@ -1,7 +1,7 @@
-import snow from '../../images/snow.jpg'
-import './styles.css';
+import snow from '../images/snow.jpg'
+import '../styles/Home.css';
 
-export default function Welcome({ setStatus }) {
+export default function Home({ setStatus }) {
   return (
     <div className="splash-container">
       <div className="splash-left">

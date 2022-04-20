@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { MdOutlineMail, MdOutlineLink } from 'react-icons/md';
-import { generateShortLink } from '../../services/firebase.service';
-import './styles.css';
+import { generateShortLink } from '../services/firebase.service';
+import '../styles/Share.css';
 
 export default function Share({ show, setShowShare, greetingData }) {
   const [shareMethod, setShareMethod] = useState('');
